@@ -30,7 +30,7 @@ Set checked to "_Use this for Recipient URL and Destination URL_"
 
 Audience URI (SP Entity ID) - **zabbix** *(Audience Restriction: a value within the SAML assertion that specifies who (and only who) the assertion is intended for. The "audience" will be the service provider and is typically a URL but can technically be formatted as any string of data. If this value is not provided by the SP, try using the ACS)*
 
-**Default RelayState stay empty.** *In Zabbix you can add redirect after login in user settings.*
+**Default RelayState stay empty.** *In Zabbix you can add custom redirect after login in "Administration -> Users" settings.*
 
 And fill other settings how you need.
 
