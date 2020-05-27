@@ -20,6 +20,7 @@ Fill first form and press "Next".
 In next tab fill this fields:
 
 Single sign on URL - *https://your-zabbix-url/ui/index_sso.php?acs*
+
 Set checked to "_Use this for Recipient URL and Destination URL_"
 
 Audience URI (SP Entity ID) - **zabbix** *(Audience Restriction: a value within the SAML assertion that specifies who (and only who) the assertion is intended for. The "audience" will be the service provider and is typically a URL but can technically be formatted as any string of data. If this value is not provided by the SP, try using the ACS)*
@@ -32,6 +33,7 @@ And fill other settings how you need.
 Then fill "Attribute Statements".
 
 Add "Name" - **usrEmail**
+
 And Value as **user.email**
 
 ![](https://raw.githubusercontent.com/catsAND/zabbix-saml/master/7.png)
@@ -40,7 +42,8 @@ In third step select I'm a software vendor. I'd like to integrate my app with Ok
 
 ![](https://raw.githubusercontent.com/catsAND/zabbix-saml/master/5.png)
 
-After go to tab "Assignments" and press button "Assign". In tooltip selecct "Assign to people"
+After go to tab "Assignments" and press button "Assign". In tooltip select "Assign to people"
+
 In popup select people what we want assign to app and press "Save and go back"
 
 ### Configure Zabbix
@@ -50,8 +53,11 @@ Then go to tab "Sign On" and press button "View instruction"
 ![](https://raw.githubusercontent.com/catsAND/zabbix-saml/master/4.png)
 
 Identity Provider Single Sign-On URL: in Zabbix is **SSO service URL**
+
 Identity Provider Issuer: in Zabbix is **IdP entity ID**
+
 **Username attribute*** in Zabbix  is attribute name. (*usrEmail*)
+
 **SP entity ID** in Zabbix is Audience URI
 
 Download certificate to **ui/conf/certs folder** as idp.crt and set permission *644* (*chmod 644 idp.crt*)
