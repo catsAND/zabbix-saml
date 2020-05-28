@@ -37,13 +37,15 @@ And fill other settings how you need.
 
 ![](https://raw.githubusercontent.com/catsAND/zabbix-saml/master/6.png)
 
+*Note: If you want encrypt your connection, you need generate private and public certificate. And upload your public certificate to okta.com. Certificate upload form available when you choose in "Assertion Encryption" value "Encrypted". For production it must have.*
+
+
 
 Then fill "Attribute Statements".
 
 Add "Name" - **usrEmail**
 
 And Value as **user.email**
-
 
 ![](https://raw.githubusercontent.com/catsAND/zabbix-saml/master/7.png)
 
@@ -76,6 +78,17 @@ Identity Provider Issuer: in Zabbix is **IdP entity ID**
 
 Download certificate to **ui/conf/certs folder** as idp.crt and set permission *644* (*chmod 644 idp.crt*)
 
+*Note: if you upgrade your Zabbix to 5.0 version you need edit your ui/conf/zabbix.conf.php to add this code:*
+```php
+// Used for SAML authentication.
+// Uncomment to override the default paths to SP private key, SP and IdP X.509 certificates, and to set extra settings.
+$SSO['SP_KEY'] = 'conf/certs/sp.key'; // Path to your private key.
+$SSO['SP_CERT'] = 'conf/certs/sp.crt'; // Path to your public key.
+$SSO['IDP_CERT'] = 'conf/certs/idp.crt'; // Path to IdP public key.
+$SSO['SETTINGS'] = []; // Additional settings. More about here https://github.com/onelogin/php-saml/tree/3.4.1#settings
+```
+*If you choose in okta.com enrypt assertion you need check this checkbox in Zabbix too.*
+
 ![](https://raw.githubusercontent.com/catsAND/zabbix-saml/master/8.png)
 
 Create zabbix user with alias as email that user use in okta.com
@@ -83,3 +96,4 @@ Create zabbix user with alias as email that user use in okta.com
 
 #### Heplful links:
 - https://support.okta.com/help/s/article/Common-SAML-Terms
+- https://stackoverflow.com/a/5246045 - How generate certificates
